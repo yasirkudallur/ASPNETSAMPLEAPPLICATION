@@ -1,0 +1,260 @@
+﻿@font-face 
+{ 
+font-family: MyFont; 
+src:url('../Fonts/DroidKufi-Regular.eot');/* this will be applied from IE 9 compatibility mode*/ 
+src: url('../Fonts/DroidKufi-Regular.eot?') format('embedded-opentype'), /* IE prior versions */ 
+url('../Fonts/roidKufi-Regular.woff') format('woff'), /* modern browser that support web open font */ 
+url('../Fonts/DroidKufi-Regular.ttf') format('truetype'); /* browsers that support true type */ 
+} 
+body {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    overflow: auto;
+    -webkit-font-smoothing: antialiased;
+    -ms-overflow-x: hidden;
+    overflow-x: hidden;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 12px;
+    font-family: "MyFont", Tahoma, Arial, Helvetica, sans-serif;
+}
+.md-btn-warning {
+    padding:2px 12px;
+    background:#FBA700; 
+    border-style: none;
+    border-color: inherit;
+    border-width: 0;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    cursor: pointer;
+    font-family:'MyFont',Tahoma,Arial,Helvetica,sans-serif; 
+    text-decoration:none;
+    text-decoration:none;
+}
+.md-btn-primary {
+    padding:2px 12px;
+    background:#2196f3; 
+    border-style: none;
+    border-color: inherit;
+    border-width: 0;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    cursor: pointer;
+    font-family:'MyFont',Tahoma,Arial,Helvetica,sans-serif; 
+    text-decoration:none;
+    text-decoration:none;
+}
+.md-btn-primary:hover{background:#2196f3}
+.md-btn-danger {
+    padding:2px 12px;
+    background:#e53935; 
+    border-style: none;
+    border-color: inherit;
+    border-width: 0;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    cursor: pointer;
+    font-family:'MyFont',Tahoma,Arial,Helvetica,sans-serif; 
+    text-decoration:none;
+}
+.md-btn-success {
+    padding:2px 12px;
+    background:#69C423; 
+    border-style: none;
+    border-color: inherit;
+    border-width: 0;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    cursor: pointer;
+    font-family:'MyFont',Tahoma,Arial,Helvetica,sans-serif; 
+    text-decoration:none;
+}
+.md-btn-peace {
+    padding:2px 12px;
+    background:white; 
+    border-style: none;
+    border-color: inherit;
+    border-width: 0;
+    color: black;
+    font-weight: bold;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    cursor: pointer;
+    font-family:'MyFont',Tahoma,Arial,Helvetica,sans-serif; 
+    text-decoration:none;
+}
+
+ .tblMain
+ {
+     padding: 0px;
+     border-spacing: 0px;
+     border-collapse: collapse;
+     margin-left:auto; 
+     margin-right:auto; 
+     background-color: White;
+     border: 1px solid #D0C4B4;
+     margin-top: 10px;
+     }
+.submit {
+    border-style: none;
+    border-color: inherit;
+    border-width: 0;
+    background: #E9E9E9;
+    color: black;
+    font-weight: bold;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    padding: 7px 18px;
+    cursor: pointer;
+    font-family:'MyFont',Tahoma,Arial,Helvetica,sans-serif;
+    }
+       .submitClose {
+    border-style: none;
+    border-color: inherit;
+    border-width: 0;
+    background: red;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    padding: 7px 18px;
+    cursor: pointer;
+    font-family:'MyFont',Tahoma,Arial,Helvetica,sans-serif;    
+}
+.trv
+{
+        font-family:'MyFont',Tahoma,Arial,Helvetica,sans-serif;    
+}
+.trHeading {
+    background-color: #E9E9E9;
+    color: black;
+    font-family:'MyFont',Tahoma,Arial,Helvetica,sans-serif; 
+}
+
+    .breakword
+ {   
+ word-wrap:break-word;
+ word-break:break-all;
+ }
+	  .dgHeader
+{
+    /*background-color:#4b6c9e;*/
+    /*background-color:#493017;*/
+    /*color: White;*/
+    	font-size:12px;
+    height : 30px;
+    font-weight: bold;
+    
+    }
+     	  .dgHeaderSpecial
+{
+    /*background-color:#493017;*/
+    background-color:white;
+    color: black;
+    height : 30px;
+    font-weight: bold;
+    
+    }
+	.tdValue
+	{	    background-color : #DD4B39
+	    
+	    }
+	    	.tdValue:hover
+	{
+	    background-color : #C74333;
+	    }
+ .row1
+	{
+	color: Black;
+	height:30px;
+	font-family: Verdana;
+	/*background:#DFF0D8; */
+	background:white; 
+	font-size:12px;
+	font-family: "MyFont", Tahoma, Arial, Helvetica, sans-serif;
+
+
+	}
+	 	.row2
+{
+    color: Black;
+	height:30px;
+	background:#D9EDF7; 
+	/*border-top:#e7e7e7 solid 1px;*/
+		font-size:12px;
+			font-family: "MyFont", Tahoma, Arial, Helvetica, sans-serif;
+	}
+	.row2:hover
+	{
+	    	color: Black;
+	height:25px;
+	background:#fcfeff; border-top:#e7e7e7 solid 1px;
+		font-size:12px;
+			font-family: "MyFont", Tahoma, Arial, Helvetica, sans-serif;
+	}
+		.row1:hover{
+	height:25px;
+	color: Black;
+    background:#fcfeff; 
+    	font-size:12px;
+	font-family: "MyFont", Tahoma, Arial, Helvetica, sans-serif;
+    }
+      .txtBox
+{
+      border:solid 1px #d3c6b2;
+      padding:3px;
+      font-family:'MyFont',Tahoma,Arial,Helvetica,sans-serif;    
+    }
+          .txtBoxLogin
+{
+      border:solid 1px #d3c6b2;
+        padding:2px;
+      font-family:'MyFont',Tahoma,Arial,Helvetica,sans-serif;    
+    }
+
+     .drpList
+    {
+          border:solid 1px #d3c6b2;
+      padding:3px;
+  	font-family: "MyFont", Tahoma, Arial, Helvetica, sans-serif;
+    }
+.lblBox
+{
+    display: block;
+    margin-bottom: 10px;
+    text-rendering: optimizelegibility;
+    font-size: 14px;
+        font-family: "MyFont", Tahoma, Arial, Helvetica, sans-serif;
+
+}
+.lblBoxLogin
+{
+    display: block;
+    text-rendering: optimizelegibility;
+    font-size: 12px;
+}
+.lnkBtn
+{
+    font-size:10px;
+  	font-family: "MyFont", Tahoma, Arial, Helvetica, sans-serif;
+    
+    }

@@ -1,0 +1,163 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="htmlHead" runat="server" >
+<head runat="server">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta http-equiv="X-UA-Compatible" content="IE=10"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta http-equiv="X-UA-Compatible" content="IE=8"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11" />
+
+    
+    <script src="Scripts/js.js" type="text/javascript"></script>
+    <script src="Scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+    
+    <script language="javascript" type="text/javascript">
+        function NewWindow() {
+            document.forms[0].target = "dispFrame";
+        }
+    </script>
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body >
+    <form runat="server">
+      <table cellpadding="0" cellspacing="0px" width="100%" border="0" align="center">
+            <tr>
+    <td bgcolor="White" align="center" >
+        <table cellpadding="0" cellspacing="0" border="0" width="100%">
+            <tr >
+                         <td align="left" width="30%">
+                                               <table cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+
+                              <td width="10px">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                              <td><img src="Images/icon_moi.png" /></td>
+                               
+                          </tr>
+                      </table>
+
+                         </td>
+      
+                          <td align="center" width="40%" style="font-size: 25px; font-weight: bold; color: #B7A500;">
+                              نظام تسجيل المسحات
+<br />
+Swab Registration System                    <%--<img src="Images/systemname.png" />--%>
+
+                </td>
+     
+                  <td align="right" width="30%">
+                <table cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                                                           
+                              <td><img src="Images/govlogo.jpg" /></td>
+                              <td width="10px">&nbsp;&nbsp;</td>
+  
+                          </tr>
+                      </table>
+                
+                </td>
+            </tr>
+            </table>
+    </td>
+    </tr>
+        <tr>
+        <td valign="top" bgcolor="#E9E9E9" 
+                
+                
+                style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: #B29300; background-color: #E9E9E9;" >
+                
+                         <%--    <div class="clear hideSkiplink">--%>
+                         <table cellpadding="2" cellspacing="0" border = "0" width="100%">
+                            <tr>
+                            <td>
+                            <asp:Menu ID="menuNames" runat="server" CssClass="menu" 
+                    EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal" 
+                    Font-Bold="True" Font-Size="25px" BackColor="#E9E9E9" Target="dispFrame">
+
+                    <DynamicHoverStyle BackColor="Red" />
+                    <DynamicMenuItemStyle BackColor="Red" />
+                    <DynamicMenuStyle BackColor="Red" />
+
+
+                </asp:Menu>
+                            </td>
+                            <td>
+                                            <table cellpadding="2" cellspacing="0" border="0" align="left" style="visibility: hidden">
+                        <tr>
+                         <td>
+                        <asp:ImageButton ID="imgBtnAddVisitor" runat="server" Height="30px" 
+                            ImageUrl="~/Images/add_visitor.png" 
+                            ToolTip="Add new visitor" Width="30px" 
+                            meta:resourcekey="imgBtnViewProjectsResource2" OnClientClick="NewWindow();" 
+                                 onclick="imgBtnAddVisitor_Click1" />
+                    </td>
+                                 <td>
+                        <asp:ImageButton ID="imgBtnViewVisitors" runat="server" Height="30px" 
+                            ImageUrl="~/Images/searchVisitors.png" onclick="imgBtnViewVisitors_Click" 
+                            ToolTip="Search visitors" Width="30px" meta:resourcekey="imgBtnTasksResource2" OnClientClick="NewWindow();" />
+                    </td>
+                    <td>
+                                                <asp:ImageButton ID="imgBtnAnalysis" runat="server" Height="30px" 
+                            ImageUrl="~/Images/iconReassess.png" onclick="imgBtnTasks_Click" 
+                            ToolTip="Dashboard" Width="30px" meta:resourcekey="imgBtnTasksResource2" OnClientClick="NewWindow();" />
+                    </td>
+                    <td>
+                    <asp:ImageButton ID="imgBtnHome" runat="server" 
+                                                                ImageUrl="~/Images/logout.png" 
+                            Height="30px" Width="30px" onclick="imgBtnHome_Click1" 
+                                                             />
+                    </td>
+                        </tr>
+                    </table>
+                            </td>
+                            </tr>
+                         </table>
+                
+<%--            </div>--%>
+                    </td>       
+        </tr>
+        <tr>
+        <td bgcolor="White">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </td>
+        </tr>
+          <tr>
+              <td>
+                  <br />
+              </td>
+          </tr>
+
+ <tr> 
+                
+    <td  style="border-top-style: solid; border-top-width: 10px; border-top-color: #B29300">
+
+    </td>
+    </tr>
+         <tr bgcolor="White">
+            <td valign="middle" height="30px" align="center" style="font-size: 20px">
+                Copyright © 2020
+
+
+
+            </td>
+    </tr>
+        </table>
+   
+
+        
+    </form>
+    <p style="direction: ltr">
+        &nbsp;</p>
+</body>
+</html>

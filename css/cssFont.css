@@ -1,0 +1,8 @@
+﻿@font-face 
+            { 
+                font-family: MyFont; 
+                src:url('../Fonts/DroidKufi-Regular.eot');/* this will be applied from IE 9 compatibility mode*/ 
+                src: url('../Fonts/DroidKufi-Regular.eot?') format('embedded-opentype'), /* IE prior versions */ 
+               url('../Fonts/roidKufi-Regular.woff') format('woff'), /* modern browser that support web open font */ 
+               url('../Fonts/DroidKufi-Regular.ttf') format('truetype'); /* browsers that support true type */ 
+           } 

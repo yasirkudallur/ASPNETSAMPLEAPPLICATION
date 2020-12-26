@@ -1,0 +1,14 @@
+# VG/VG Proxy access configuration
+vg_url = http://172.16.11.13/ValidationGatewayService
+vg_connection_timeout = 60
+
+# Configuration Settings
+agent_tls_enabled = false
+
+read_publicdata_offline = true
+
+# Log Settings
+log_level = INFO
+log_performance_time = true
+log_directory = "C:\ToolkitWebSample\"
+

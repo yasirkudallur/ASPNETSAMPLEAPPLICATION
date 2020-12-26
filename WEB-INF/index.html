@@ -1,0 +1,1907 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>JSTOOLKIT</title>
+    <link rel="stylesheet" type="text/css" href="toolkitstyle.css">
+    <script type="text/javascript" language="javascript" src="toolkit_sample.js"></script>
+    <script type="text/javascript" language="javascript" src="eidatoolkit.js"></script>
+    <script type="text/javascript">
+        function setHeight() {
+            var heights = window.innerHeight;
+            document.getElementById("mainNav1").style.height = ((heights / 100) * 90) + 5 + "px";
+            document.getElementById("body").style.height = ((heights / 100) * 90) + 5 + "px";
+        }
+        window.onresize = function () {
+            setHeight();
+        };
+    </script>
+</head>
+
+<body onload="setHeight()">
+    <div class="custom-container-fluid" style="display:none">
+        <div class="custom-position">
+            <img class="custom-img" src="images/logo.png">
+            <div class="custom-loader">
+            </div>
+        </div>
+    </div>
+    <div id="pageWrapper">
+        <div id="mainHeader">
+            <div id="mainNav">
+                <div id="navContent">
+                    <div class="mainLogo">
+					<img src="./images/ICA_Logo.png"/>
+					</div>
+                    <div class="title">
+                        <h4>ICA'S TOOLKIT SDK</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="bodWrap">
+            <div id="mainNav1">
+                <div id="navContent">
+
+                    <ul id="sideList">
+                        <li>
+                            <button onclick="Initialize()">
+                                Initialize
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="registerDevice()">
+                                Register Device
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" id="disconnectBtn" disabled onclick="deviceId()">
+                                DeviceId
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" id="setNfcParams" disabled onclick="NFCAuth()">
+                                NFC
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" id="publicDataBtn" disabled onclick="DisplayPublicData()">
+                                Read Public Data
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="CheckCardStatus()">
+                                Check Card Status
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="pinReset()">
+                                PIN Reset
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" id="matchon" disabled onclick="MatchOnCard()">
+                                Match On Card
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="GetFingerIndex()">
+                                Get Finger Index
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="ReadCertificate()">
+                                Read Certificates
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="PKIAuth()">
+                                PKI Auth
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" id="verifyBioBtn" disabled onclick="VerifyBio()">
+                                Verify Biometric
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="SignData()">
+                                Sign Data
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="SignChallengeData()">
+                                Sign Challenge Data
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="VerifySignature()">
+                                Verify Signature
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="PinUnblock()">
+                                Un-Block PIN
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="DisplayFamilyBookDataN()">
+                                Family Book Data
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="CardGenuine()">
+                                Is Card Genuine
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="SignXMLFunc()">
+                                Sign XML file
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="VerifyXMLFunc()">
+                                Verify Signed XML File
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="SignPDFFunc()">
+                                Sign Pdf File
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="VerifyPDFFunc()">
+                                Verify Signed Pdf File
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="SignOtrFile()">
+                                Sign Other File
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" disabled onclick="VerifyOtrFile()">
+                                Verify Other file
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" id="toolkitVersionBtn" disabled onclick="ToolkitVersion()">
+                                Toolkit Version
+                            </button>
+                        </li>
+                        <li>
+                            <button class="buttonInitial" id="disconnectBtn" disabled onclick="disconnectWS()">
+                                Disconnect
+                            </button>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <div id="body">
+                <table border="0" align="center">
+                    <tr>
+                        <td>
+                            <div>
+                                <font style="color:#a31d35;font-size: 1.5em "> Please select an option from left side menu. </font>
+                            </div>
+                        </td>
+
+                    </tr>
+                </table>
+                <br>
+                <div id="workAreaDiv" class="temp-progress-initial">
+
+                    <table id="progressTable" border="0" align="center">
+                        <tr>
+                            <td>
+                                <label>
+                                    <font size="2px">Progress : </font>
+                                </label>
+                            </td>
+                            <td>
+                                <textarea rows="3" cols="50" id="prgssText" disabled></textarea>
+                            </td>
+
+                        </tr>
+                    </table>
+                    <!-- ##  Main working area table  ## -->
+                    <br>
+                    <div id="mainTable">
+
+                        <!------------- ################## ---------  Family Book Data display area --- ################## -------->
+                        <div id="familyBookDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Family Book Data </u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>Enter PIN : </label>
+                                        <input type="text" id="familyBkDtPinTxtBx" style="text-align:center; font-size: 20px">
+                                    </td>
+                                    <td>
+                                        <button type="button" class="button" style="height: 35px;" id="familyBkDtPinSubmitBtn" onclick="familyBkDtPinSubmit()">Get Family Data</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="hidden" id="familyBkDtPinResultTxtBx" style="text-align:center; font-size: 20px;" disabled="disabled">
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <div id="dispalyfmaily" style="display:none">
+                                <table align="center" id="headOfFamData">
+                                    <tr>
+                                        <th>
+                                            <label>
+                                                <u>Head Of Family</u>
+                                            </label>
+                                        </th>
+                                    </tr>
+                                    <tr></tr>
+                                </table>
+                                <table align="center" id="famWifeData">
+                                    <tr>
+                                        <th>
+                                            <label>
+                                                <u>Wifes</u>
+                                            </label>
+                                        </th>
+                                    </tr>
+                                    <tr></tr>
+                                </table>
+                                <table align="center" id="famChildData">
+                                    <tr>
+                                        <th>
+                                            <label>
+                                                <u>Children</u>
+                                            </label>
+                                        </th>
+                                    </tr>
+                                    <tr></tr>
+                                </table>
+                            </div>
+
+                        </div>
+                        <div id="signDataDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Sign Data</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td align="center">
+                                        <label>Select Type of Data :</label>
+                                    </td>
+                                    <td>
+                                        <select id="signDataHashedSelect">
+                                            <option selected disabled="disabled" value="">Select </option>
+                                            <option value="0">Plain Data</option>
+                                            <option value="1">Hashed Data</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                            <form>
+                                <table align="center">
+                                    <tr>
+                                        <td align="center">
+                                            <label>Data to be signed</label>
+                                        </td>
+                                        <td align="center">
+                                            <label>Signed Data</label>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <textarea rows="10" cols="50" id="dataTextArea"></textarea>
+                                        </td>
+                                        <td>
+                                            <textarea rows="10" cols="50" id="resultTextArea" readonly="readonly"></textarea>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <table align="center">
+                                    <tr>
+                                        <td>
+                                            <button class="button" style="height: 35px;" type="button" id="signDataSubmitBtn" onclick="SignDataSubmit()">Sign Data</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                        <div id="signChallangeDataDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Sign Challenge Data</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td align="center">
+                                        <label>Select Type of Data :</label>
+                                    </td>
+                                    <td>
+                                        <select id="challengesignDataHashedSelect">
+                                            <option selected disabled="disabled" value="">Select </option>
+                                            <option value="1">Hashed Data</option>
+                                            <option value="0">Plain Data</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table align="center">
+                                <tr>
+                                    <td align="center">
+                                        <label>Data to be signed</label>
+                                    </td>
+                                    <td align="center">
+                                        <label>Signed Data</label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <textarea rows="10" cols="50" id="challengedataTextArea"></textarea>
+                                    </td>
+                                    <td>
+                                        <textarea rows="10" cols="50" id="challengeresultTextArea" readonly="readonly"></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <button class="button" style="height: 35px;" type="button" id="SignChallengeDataSubmitBtn" onclick="SignChallengeDataSubmit()">Sign Data</button>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div id="verifyDataDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Verify Data</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td align="center">
+                                        <label>Select Certificate Type :</label>
+                                    </td>
+                                    <td>
+                                        <select id="verifyDataCertSelect">
+                                            <option selected disabled="disabled">Select Cert Type</option>
+                                            <option value="1">Sign Cert</option>
+                                            <option value="2">Auth Cert</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <label>Select Type of Data :</label>
+                                    </td>
+                                    <td>
+                                        <select id="verifyDataHashedSelect">
+                                            <option disabled="disabled">Select </option>
+                                            <option value="1">Hashed Data</option>
+                                            <option value="0">Plain Data</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table align="center">
+                                <tr>
+                                    <td align="center">
+                                        <label>Original Data :</label>
+                                    </td>
+                                    <td>
+                                        <textarea rows="10" cols="50" id="originalDataTextArea"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <label>Signed Data (Signature) :</label>
+                                    </td>
+                                    <td>
+                                        <textarea rows="10" cols="50" id="signedDataTextArea"></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <button class="button" style="height: 35px;" type="button" id="verifyDataSubmitBtn" onclick="VerifyDataSubmit()">Verify Data</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="hidden" id="verifyDataTxtBx" style="text-align:center; font-size: 30px" disabled="disabled">
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                        <div id="verifyBioDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Verify Biometric</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <select id="verifyBioFingerSelect">
+                                            <option selected disabled="disabled">Select Finger</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button class="button" style="height: 35px;" type="button" id="verifyBioSubmitBtn" onclick="VerifyBioSubmit()">Verify Biometric</button>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <input type="hidden" id="verifyBioTxtBx" style="text-align:center; font-size: 30px" disabled="disabled">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="fingerIndexDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Card Holder's Finger Indexes</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <textarea rows="3" cols="20" id="fingerIndexTextArea"></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="readCertsDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Card Holder's Certificate Data</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>Enter PIN : </label>
+                                        <input type="text" id="rd_cert_pin" style="text-align:center; font-size: 20px">
+                                    </td>
+                                    <td>
+                                        <button class="button" style="height: 35px;" type="button" id="rd_cert_pin" onclick="ReadCertificates()">Get Certificates</button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td align="center">
+                                        <label>Authentication Certificate</label>
+                                    </td>
+                                    <td align="center">
+                                        <label>Signing Certificate</label>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <textarea rows="15" cols="50" id="signCertTextArea"></textarea>
+                                    </td>
+                                    <td>
+                                        <textarea rows="15" cols="50" id="authCertTextArea"></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="pkiAuthDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>PKI Auth</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>Enter PIN : </label>
+                                        <input type="text" id="pkiAuthTxtBx" style="text-align:center; font-size: 20px">
+                                    </td>
+                                    <td>
+                                        <button class="button" style="height: 35px;" type="button" id="pkiAuthSubmitBtn" onclick="PKIAuthSubmit()">Verify Auth Cert</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="hidden" id="pkiAuthResultTxtBx" style="text-align:center; font-size: 20px;" disabled="disabled">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="signXADESDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Sign XML file</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>Enter file location for signing (with file name and extension) : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="signXADESinputTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Enter TSA URL : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="tsaUrlTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Enter OCSP URL : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="ocspUrlTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Certificate Path : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="certPathTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Country : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="countryTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Locality : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="localityTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Postal Code : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="postalCodeTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>State or Province : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="stateTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Street : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="streetTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>PIN : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="pinTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Select Signature Level : </label>
+                                    </td>
+                                    <td>
+                                        <select id="signatureLevelSelect">
+                                            <option selected value=1>BASELINE_B</option>
+                                            <option value=2>BASELINE_LT</option>
+                                            <option value=3>BASELINE_LTA</option>
+                                            <option value=4>BASELINE_T</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Select Packaging Mode : </label>
+                                    </td>
+                                    <td>
+                                        <select id="pkgModeSelect" onchange="pkgModeSelectChange()">
+                                            <option selected disabled>Select One</option>
+                                            <option value=1>ENVELOPED</option>
+                                            <option value=2>ENVELOPING</option>
+                                            <option value=3>DEATACHED</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div id="signedFileDivXADES" class="signed-file-path-div">
+                                <table align="center">
+                                    <tr>
+                                        <td>
+                                            <label>Enter file location for storing signed file : &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                                                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="signXADESouputTxtBx" style="font-size: 20px" value="">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <table align="center">
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button class="button" style="height: 35px;" type="button" id="signXADESSubmitBtn" onclick="SignXMLSubmit()">Sign</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Result :</td>
+                                    <td>
+                                        <textarea id="signXADESResultTxtBx" style="text-align:center; font-size: 20px;display: none" rows="10" cols="75" disabled></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <br>
+                            <div id="signedXADESResultDiv" class="detached-result-div">
+                                <table align="center">
+                                    <tr>
+                                        <td>
+                                            <label>Detached Signed Data : &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                                                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                                                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </label>
+                                        </td>
+                                        <td>
+                                            <textarea rows="3" cols="60" id="signedXADESResultTxtArea"></textarea>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="signCADESDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Sign Other file</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>Enter file location for signing (with file name and extension) : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="signCADESinputTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Enter TSA URL : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="CtsaUrlTxtBx" value="" style="font-size: 20px">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Enter OCSP URL : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="CocspUrlTxtBx" value="" style="font-size: 20px">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Certificate Path : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="CcertPathTxtBx" value="" style="font-size: 20px">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Country : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="CcountryTxtBx" value="" style="font-size: 20px">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Locality : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="ClocalityTxtBx" value="" style="font-size: 20px">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Postal Code : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="CpostalCodeTxtBx" value="" style="font-size: 20px">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>State or Province : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="CstateTxtBx" value="" style="font-size: 20px">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Street : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="CstreetTxtBx" value="" style="font-size: 20px">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>PIN : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="CpinTxtBx" value="" style="font-size: 20px">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Select Signature Level : </label>
+                                    </td>
+                                    <td>
+                                        <select id="CsignatureLevelSelect">
+                                            <option value=1>BASELINE_B</option>
+                                            <option value=2>BASELINE_LT</option>
+                                            <option value=3>BASELINE_LTA</option>
+                                            <option value=4>BASELINE_T</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Packaging Mode : </label>
+                                    </td>
+                                    <td>
+                                        <select id="CSignpkgModeSelect">
+                                            <option selected="true" value=3>DEATACHED</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button class="button" style="height: 35px;" type="button" id="signCADESSubmitBtn" onclick="SignOtrFileSubmit()">Sign</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Result :</td>
+                                    <td>
+                                        <textarea id="signCADESResultTxtBx" style="text-align:center; font-size: 20px;display: none" rows="10" cols="75" disabled></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <br>
+                            <div id="signedCADESResultDiv" class="detached-result-div">
+                                <table align="center">
+                                    <tr>
+                                        <td>
+                                            <label>Signed Data : &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                                                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                                                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </label>
+                                        </td>
+                                        <td>
+                                            <textarea rows="3" cols="60" id="signedCADESResultTxtArea"></textarea>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="verifyXADESDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Verify Signed XML file</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>Enter OCSP Url : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="verifyXADESocspUrlTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Enter Certificate Path : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="verifyXADEScertPathTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Select Packaging Mode : </label>
+                                    </td>
+                                    <td>
+                                        <select id="XVerifypkgModeSelect" onchange="XVerifypkgModeSelectChange()">
+                                            <option selected disabled>Select One</option>
+                                            <option value=1>ENVELOPED</option>
+                                            <option value=2>ENVELOPING</option>
+                                            <option value=3>DEATACHED</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Select REPORT TYPE : </label>
+                                    </td>
+                                    <td>
+                                        <select id="SVerifyReportSelect">
+                                            <option selected disabled>Select One</option>
+                                            <option value=1>DETAILED</option>
+                                            <option value=2>DIAGNOSTIC</option>
+                                            <option value=3>SIMPLE</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label id="verifyXADESLbl">Enter XML Signed File Path
+                                            <br> (with file name and extension) : &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="verifyXADESTxtinputBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div id="XverifyInSignedDtDiv" class="verify-input-file-path-div">
+                                <table align="center">
+                                    <tr>
+                                        <td>
+                                            <label>Enter Signed Data : &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                                                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <textarea id="verifyXADESSignedDtBx" rows="5" cols="58"></textarea>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <table align="center">
+                                <tr style="text-align: center">
+                                    <td></td>
+                                    <td>
+                                        <button class="button" style="height: 35px;" type="button" id="verifyXADESSubmitBtn" onclick="VerifyXMlSubmit()">Verify</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <textarea id="verifyXADESResultTxtBx" style="text-align:center; font-size: 20px; display:none;" rows="8" cols="80" disabled="disabled"></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="signPADESDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Sign PDF file</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>Enter file location for signing (with file name and extension) : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="signPADESinputTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Enter TSA URL : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="PtsaUrlTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Enter OCSP URL : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="PocspUrlTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Certificate Path : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="PcertPathTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Country : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="PcountryTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Locality : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="PlocalityTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Postal Code : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="PpostalCodeTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>State or Province : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="PstateTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Street : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="PstreetTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>PIN : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="PpinTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Reason for signing : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="reasonSignTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Signer Location : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="signerLocationTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Signer Contact Info : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="signerContactInfoTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Signature X-axis : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="sigXaxisTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Signature Y-axis : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="sigYaxisTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Signature Image Path : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="sigImgPathTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Background Color : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="bgColorTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Font Color : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="fontColorTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Font Size : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="fontSizeTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Font Name : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="fontNameTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Signature Text : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="sigTextTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Page Number : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="pgNumberTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Sign Visible : </label>
+                                    </td>
+                                    <td>
+                                        <select id="sigVisibleSelect">
+                                            <option selected value=1>VISIBLE</option>
+                                            <option value=2>INVISIBLE</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Signer name position : </label>
+                                    </td>
+                                    <td>
+                                        <select id="signNmPositionSelect">
+                                            <option selected value=1>LEFT</option>
+                                            <option value=2>RIGHT</option>
+                                            <option value=3>TOP</option>
+                                            <option value=4>BOTTOM</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Select Signature Level : </label>
+                                    </td>
+                                    <td>
+                                        <select id="PsignatureLevelSelect">
+                                            <option selected value=1>BASELINE_B</option>
+                                            <option value=2>BASELINE_LT</option>
+                                            <option value=3>BASELINE_LTA</option>
+                                            <option value=4>BASELINE_T</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Select Packaging Mode : </label>
+                                    </td>
+                                    <td>
+                                        <select id="PpkgModeSelect">
+                                            <option selected disabled>Select One</option>
+                                            <option value=1>ENVELOPED</option>
+                                            <option value=2>ENVELOPING</option>
+                                            <option value=3>DEATACHED</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Enter file location for storing signed file : &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp
+                                            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="signPADESouputTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+                            </table>
+                            <table align="center">
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button class="button" style="height: 35px;" type="button" id="signPADESSubmitBtn" onclick="SignPDFSubmit()">Sign</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Result :</td>
+                                    <td>
+                                        <textarea id="signPADESResultTxtBx" style="text-align:center; font-size: 20px;display:none" rows="10" cols="75" disabled></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <br>
+                            <div id="signedPADESResultDiv" class="detached-result-div">
+                                <table align="center">
+                                    <tr>
+                                        <td>
+                                            <label>Detached Signed Data : &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                                                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                                                &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp </label>
+                                        </td>
+                                        <td>
+                                            <textarea rows="3" cols="60" id="signedPADESResultTxtArea"></textarea>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div id="verifyPADESDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Verify Signed PDF file</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>Enter OCSP Url : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="verifyPADESocspUrlTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Enter Certificate Path : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="verifyPADEScertPathTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Select Packaging Mode : </label>
+                                    </td>
+                                    <td>
+                                        <select id="PVerifypkgModeSelect">
+                                            <option selected disabled>Select One</option>
+                                            <option value=1>ENVELOPED</option>
+                                            <option value=2>ENVELOPING</option>
+                                            <option value=3>DEATACHED</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Select REPORT TYPE : </label>
+                                    </td>
+                                    <td>
+                                        <select id="PVerifyReportSelect">
+                                            <option selected disabled>Select One</option>
+                                            <option value=1>DETAILED</option>
+                                            <option value=2>DIAGNOSTIC</option>
+                                            <option value=3>SIMPLE</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label id="verifyPADESLbl">Enter PDF Signed File Path
+                                            <br> (with file name and extension) : &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="verifyPADESTxtinputBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button class="button" style="height: 35px;" type="button" id="verifyPADESSubmitBtn" onclick="VerifyPDFSubmit()">Verify</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <textarea id="verifyPADESResultTxtBx" style="text-align:center; font-size: 20px; display:none" cols="80" rows="8" disabled="disabled"></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="verifyCADESDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Verify Signed file</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>Enter Original File Path (with file name and extension) : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="verifyCADESTxtinputBx" value="" style="font-size: 20px">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Enter OCSP Url : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="verifyCADESocspUrlTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Enter Certificate Path : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="verifyCADEScertPathTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Signed Data : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="verifyCADESSignDataPathTxtBx" style="font-size: 20px" value="">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Packaging Mode : </label>
+                                    </td>
+                                    <td>
+                                        <select id="CVerifypkgModeSelect">
+                                            <option selected value=3>DEATACHED</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Select REPORT TYPE : </label>
+                                    </td>
+                                    <td>
+                                        <select id="CVerifyReportSelect">
+                                            <option selected disabled>Select One</option>
+                                            <option value=1>DETAILED</option>
+                                            <option value=2>DIAGNOSTIC</option>
+                                            <option value=3>SIMPLE</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button class="button" style="height: 35px;" type="button" id="verifyCADESSubmitBtn" onclick="VerifyOtrFileSubmit()">Verify</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <textarea id="verifyCADESResultTxtBx" style="text-align:center; font-size: 20px; display:none" cols="70" rows="8" disabled="disabled"></textarea>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="pinResetDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>PIN Reset</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <select id="resetPINFingerSelect">
+                                            <option selected disabled="disabled">Select Finger</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>New PIN : </label>
+                                        <input type="text" id="pinResetTxtBx" style="text-align:center; font-size: 20px">
+                                    </td>
+                                    <td>
+                                        <button class="button" style="height: 35px;" type="button" id="pinResetSubmitBtn" onclick="pinResetSubmit()">Reset PIN</button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <input type="hidden" id="pinResetBioTxtBx" style="text-align:center; font-size: 30px" disabled="disabled">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="unBlockPinDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Un-Block PIN</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <select id="unBlockPinFingerSelect">
+                                            <option selected disabled="disabled">Select Finger</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>New PIN : </label>
+                                        <input type="text" id="unBlockPinTxtBx" style="text-align:center; font-size: 20px">
+                                    </td>
+                                    <td>
+                                        <button class="button" style="height: 35px;" type="button" id="unBlockPinSubmitBtn" onclick="UnBlockPinSubmit()">Un-Blobk PIN</button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <input type="hidden" id="unBlockPinBioTxtBx" style="text-align:center; font-size: 30px" disabled="disabled">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="matchOncardDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Un-Block PIN</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <select id="matchonPinFingerSelect">
+                                            <option selected disabled="disabled">Select Finger</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <button class="button" style="height: 35px;" type="button" id="matchonPinSubmitBtn" onclick="MatchOnCardSubmit()">Matchon PIN</button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <input type="hidden" id="matchonPinBioTxtBx" style="text-align:center; font-size: 30px" disabled="disabled">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="cardStatusDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Check Card Status</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>This Card is : </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="cardStatusTxtBx" style="text-align:center; font-size: 20px" disabled="disabled">
+                                    </td>
+                                </tr>
+                                <tr id="cardStatusTxtXMlrow" style="display:none">
+                                    <td>
+                                        <label>XML Respone is: </label>
+                                    </td>
+                                    <td>
+                                        <textarea id="cardStatusTxtXML" style="text-align:center; font-size: 20px;" disabled="disabled" rows="10" cols="75"></textarea>
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="cardGenuineDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Is Card Genuine</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>This Card is : </label>
+                                        <input type="text" id="cardGenuineTxtBx" style="text-align:center; font-size: 20px" disabled="disabled">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="poublicDataDiv" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>Card Holder's Public Data</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="left">
+                                <tr>
+                                    <td>
+                                        <label>IDNumber</label>
+                                    </td>
+                                    <td>
+                                        <label>:</label>
+                                    </td>
+                                    <td>
+                                        <label id="IDNumber_data">--</label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>CardNumber</label>
+                                    </td>
+                                    <td>
+                                        <label>:</label>
+                                    </td>
+                                    <td>
+                                        <label id="CardNumber_data">--</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>CardSerialNumber</label>
+                                    </td>
+                                    <td>
+                                        <label>:</label>
+                                    </td>
+                                    <td>
+                                        <label id="Cardsl_no">--</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>RequestId</label>
+                                    </td>
+                                    <td>
+                                        <label>:</label>
+                                    </td>
+                                    <td>
+                                        <label id="Request_id">--</label>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <label>Service</label>
+                                    </td>
+                                    <td>
+                                        <label>:</label>
+                                    </td>
+                                    <td>
+                                        <label id="service">--</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Photo</label>
+                                    </td>
+                                    <td>
+                                        <label>:</label>
+                                    </td>
+                                    <td>
+                                        <img id="pubphoto" src="">
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table cellspacing="10" align="left">
+                                <tr>
+                                    <td>
+                                        <table align="center">
+                                            <tr>
+                                                <td>
+                                                    <label>
+                                                        <u>Modifiable Data</u>
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table class="pbDataTable" id="md-DataTable" align="left">
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table align="center">
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    <label>
+                                                        <u>Non Modifiable Data</u>
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <table class="pbDataTable" id="nmd-DataTable" align="left">
+                                        </table>
+                                    </td>
+
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <table align="center">
+                                            <tr>
+                                                <td>
+                                                    <label>
+                                                        <u>Home Address Data</u>
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <table class="pbDataTable" id="hm_address_data" align="left">
+
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <table align="center">
+                                            <tr>
+                                                <td>
+                                                    <label>
+                                                        <u>Work Address Data</u>
+                                                    </label>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+
+                                        <table class="pbDataTable" id="wrk_address_data" align="left">
+
+                                        </table>
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="setNfcParamsDiv" style="text-align: center" class="public-data-div">
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <u>NFC Params</u>
+                                        </label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <form id='group'>
+                                            <label>
+                                                <input type="radio" name="nfcgroup" value="mzr" onclick="hidetable('twoParam');showtable('oneParam');" /> MRZ Data
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="nfcgroup" value="cdetails" onclick="hidetable('oneParam');showtable('twoParam');" /> Card Deatils
+                                            </label>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table align="center" style="display:none" id="oneParam">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <font size="2px">MZR Data : </font>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <textarea rows="5" cols="50" id="NfcParamsmrzData"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button class="button" style="height: 35px;" type="button" onclick="NFCAuthSubmit()">Submit</button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table align="center" style="display:none" id="twoParam">
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <font size="2px">CardNumber : </font>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="NfcParamscardNum" style="text-align:center; font-size: 20px">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <font size="2px">DateOfBirth : </font>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <input type="date" id="NfcParamsDOB" style="text-align:center; font-size: 20px">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>
+                                            <font size="2px">Card ExpiryDate : </font>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <input type="date" id="NfcParamsED" style="text-align:center; font-size: 20px">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <button class="button" style="height: 35px;" type="button" onclick="NFCAuthSubmit()">Submit</button>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table align="center">
+                                <tr>
+                                    <td>
+                                        <label id="NfcMessage"></label>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var elems = document.getElementById("sideList").getElementsByTagName("li");
+        makeActive = function () {
+            for (var i = 0; i < elems.length; i++)
+                elems[i].classList.remove('active');
+            this.classList.add('active');
+        };
+        for (var i = 0; i < elems.length; i++)
+            elems[i].addEventListener('click', makeActive);
+    </script>
+</body>
+
+</html>
